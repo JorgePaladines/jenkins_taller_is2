@@ -14,6 +14,12 @@ plugins {
     id 'findbugs'
     id 'eclipse'
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 checkstyle {
 	toolVersion "7.6.1"
     configFile file("config/checkstyle/checkstyle.xml")
@@ -59,6 +65,23 @@ pmd {
     pmdTest.enabled=false
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'gradle.cucumber', 'src/test/resources']
+        }
+    }
+}
+
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
@@ -91,5 +114,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.powermock/powermock-mockito-release-full
 	//testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.5.4'
 	
-    
+	//Cucumber
+	testCompile 'io.cucumber:cucumber-java:4.7.4'
+	testCompile 'io.cucumber:cucumber-junit:4.7.4'
+	
 }

@@ -6,7 +6,9 @@ public class MainPrima {
 		
 		CalcPrima calculadora = new CalcPrima();
 		try {
-			calculadora.retornarPrima(30, 28);
+			calculadora.retornarPrima(65, 26);
+			calculadora.retornarPrima(65, 25);
+			calculadora.retornarPrima(65, 24);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

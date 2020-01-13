@@ -15,7 +15,7 @@ public class CalcPrima {
 	public int retornarPrima(int ed, int pts) throws Exception {
     	double pr;
     	if (pts < 1 || pts > 30) {
-    		throw new Exception("Puntos fuera del rango válido");   		
+    		throw new Exception("Puntos fuera del rango vï¿½lido");   		
     	}
     	else {
             pr = calcularPrima(ed, pts);
@@ -23,7 +23,7 @@ public class CalcPrima {
             	System.out.println("El valor es de " + pr);
             }
             else {
-            	throw new Exception("Edad fuera del rango válido"); 
+            	throw new Exception("Edad fuera del rango vï¿½lido"); 
             }
     	}
     	return (int)pr;
@@ -65,7 +65,7 @@ public class CalcPrima {
             return 3;
         }
         else {
-            return -2;
+            return 4;
         }
     }
 	
