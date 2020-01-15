@@ -92,7 +92,7 @@ public class CalcPrima {
               check = (perdidos <= 7);
                 break;
             case 4:
-              check = (perdidos <= 5);
+              check = (perdidos <= 4);
                 break;
             default:
                 break;
